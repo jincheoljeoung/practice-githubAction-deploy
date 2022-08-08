@@ -22,6 +22,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: chmod
+      run: chmod +x ./gradlew
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -31,7 +33,6 @@ jobs:
     - name: Make zip file
       run: zip -r ./practice-deploy.zip .
       shell: bash
-    
     # Access Key와 Secret Access Key를 통해 권한을 확인합니다.
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
